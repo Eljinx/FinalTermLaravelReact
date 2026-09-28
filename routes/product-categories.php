@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductCategoryController;
 
-Route::name('product-categories.')->prefix('product-category')->group(function () {
+Route::name('product-categories.')->prefix('product-category')->middleware('auth')->group(function () {
     Route::get('/product-categories', [ProductCategoryController::class, 'index'])
         ->name('index');
 
@@ -22,6 +22,6 @@ Route::name('product-categories.')->prefix('product-category')->group(function (
     Route::put('/product-categories/{productCategory}', [ProductCategoryController::class, 'update'])
         ->name('update');
 
-    Route::delete('/product-categories/{productCategory}', [ProductCategoryController::class, 'destroy'])
+   Route::delete('/product-categories/{productCategory}', [ProductCategoryController::class, 'destroy'])
         ->name('destroy');
 });

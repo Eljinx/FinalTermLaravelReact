@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 
 Route::name('products.')->prefix('product')->group(function () {
     Route::get('/products', [ProductController::class, 'index'])
+        ->middleware('permission:view products')
         ->name('index');
 
     Route::get('/products/create', [ProductController::class, 'create'])
